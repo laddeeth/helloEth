@@ -6,12 +6,24 @@ export default class Web3 {
   }
 
   toEther(bigNumber) {
-    return parseFloat(ethers.utils.formatEther(bigNumber));
+    return parseFloat(ethers.utils.formatEther(bigNumber)).toFixed(2);
   }
 
   async getBalance(wallet) {
     try {
       return this.toEther(await this.provider.getBalance(wallet));
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
+  async transferEth(from, to, amount) {
+    try {
+      const signer = await this.provider.getSigner(from);
+      await signer.sendTransaction({
+        to: to,
+        value: ethers.utils.parseEther(amount),
+      });
     } catch (error) {
       throw new Error(error);
     }
