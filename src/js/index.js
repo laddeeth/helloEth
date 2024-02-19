@@ -1,4 +1,5 @@
 import Web3 from './web3.js';
+import { drawBalance, emptyUser } from './dom.js';
 
 const providerUrl = 'HTTP://127.0.0.1:7545';
 const web3 = new Web3(providerUrl);
@@ -11,12 +12,15 @@ function initApp() {
 }
 
 async function getBalance() {
+  emptyUser();
   try {
-    console.log(await web3.getBalance(inputWallet.value));
-  } catch {
-    console.log('Wrong wallet adress at provider');
+    const balance = await web3.getBalance(inputWallet.value);
+    drawBalance(balance);
+  } catch (error) {
+    console.log(error);
   }
 }
 
+inputWallet.addEventListener('keydown', emptyUser);
 document.addEventListener('DOMContentLoaded', initApp);
 checkBalanceButton.addEventListener('click', getBalance);

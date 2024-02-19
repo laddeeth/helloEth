@@ -6,14 +6,14 @@ export default class Web3 {
   }
 
   toEther(bigNumber) {
-    return ethers.utils.formatEther(bigNumber);
+    return parseFloat(ethers.utils.formatEther(bigNumber));
   }
 
   async getBalance(wallet) {
     try {
       return this.toEther(await this.provider.getBalance(wallet));
     } catch (error) {
-      throw new Error();
+      throw new Error(error);
     }
   }
 }
