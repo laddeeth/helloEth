@@ -1,5 +1,5 @@
 import Web3 from './Web3.js';
-import { drawBalance, emptyUser } from './dom.js';
+import { drawBalance, drawSuccess, emptyUser } from './dom.js';
 import displayError from './errorHandler.js';
 
 const providerUrl = 'HTTP://127.0.0.1:7545';
@@ -30,6 +30,7 @@ async function transferEth() {
   try {
     await web3.transferEth(inputWallet.value, recipient.value, amount.value);
     emptyUser();
+    drawSuccess(inputWallet.value, recipient.value, amount.value);
   } catch (error) {
     displayError(error);
   }

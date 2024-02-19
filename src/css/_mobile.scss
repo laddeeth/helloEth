@@ -100,7 +100,20 @@ body {
       label[for='amount'] {
         margin-top: 1rem;
       }
+      div.success {
+        font-size: 0.8rem;
+        max-width: 90%;
+        background-color: lightgreen;
+        color: darkgreen;
+        padding: 0.2rem;
+        border-radius: 0.2rem;
+        border: solid 1px green;
+        p {
+          text-wrap: stable;
+        }
+      }
     }
+
     #transferDisplay > span {
       max-width: 80%;
       background-color: rgb(0, 0, 0, 0.3);

@@ -3,7 +3,6 @@ const errorWindow = document.querySelector('#error');
 
 const drawError = (message) => {
   emptyElement(errorWindow);
-  console.log('Error');
   const span = createSpan();
   span.append(message + ' (This message will self-destruct in 5 seconds)');
   errorWindow.append(span);
@@ -12,6 +11,18 @@ const drawError = (message) => {
     errorWindow.classList.toggle('hide');
   }, 5000);
 };
+
+const drawSuccess = (from, to, amount) => {
+  const div = createDiv();
+  div.classList.add('success');
+  const p = createP();
+  p.append(
+    `Congratulations ${from}! Your transfer of ${amount}ETH to ${to} is a success. Check balance to instigate a new transfer.`
+  );
+  div.append(p);
+  transferDisplay.append(div);
+};
+
 const drawBalance = (balance) => {
   const span = createSpan();
   const fa = createFa(['fa-solid', 'fa-arrow-down']);
@@ -52,6 +63,12 @@ const emptyElement = (element) => {
   }
 };
 
+const createP = () => {
+  return document.createElement('p');
+};
+const createDiv = () => {
+  return document.createElement('div');
+};
 const createSpan = () => {
   return document.createElement('span');
 };
@@ -84,4 +101,4 @@ const createButton = (text, id) => {
   return button;
 };
 
-export { drawBalance, emptyUser, drawError };
+export { drawBalance, emptyUser, drawError, drawSuccess };
