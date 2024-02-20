@@ -1,5 +1,6 @@
 const transferDisplay = document.querySelector('#transferDisplay');
 const errorWindow = document.querySelector('#error');
+const blocks = document.querySelector('#blockCount');
 
 const drawError = (message) => {
   emptyElement(errorWindow);
@@ -10,6 +11,10 @@ const drawError = (message) => {
   setTimeout(() => {
     errorWindow.classList.toggle('hide');
   }, 5000);
+};
+
+const drawBlocks = (blockNumber) => {
+  blocks.innerHTML = parseInt(blockNumber);
 };
 
 const drawSuccess = (from, to, amount) => {
@@ -101,4 +106,4 @@ const createButton = (text, id) => {
   return button;
 };
 
-export { drawBalance, emptyUser, drawError, drawSuccess };
+export { drawBalance, emptyUser, drawError, drawSuccess, drawBlocks };

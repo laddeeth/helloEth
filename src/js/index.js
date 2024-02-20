@@ -1,5 +1,5 @@
-import Web3 from './Web3.js';
-import { drawBalance, drawSuccess, emptyUser } from './dom.js';
+import Web3 from './web3.js';
+import { drawBalance, drawSuccess, emptyUser, drawBlocks } from './dom.js';
 import displayError from './errorHandler.js';
 
 const providerUrl = 'HTTP://127.0.0.1:7545';
@@ -9,7 +9,7 @@ const checkBalanceButton = document.querySelector('#checkBalance');
 const inputWallet = document.querySelector('#account');
 
 async function initApp() {
-  console.log('Hello Eth');
+  drawBlocks(await web3.getLatestBlock());
 }
 
 async function getBalance() {
@@ -31,6 +31,7 @@ async function transferEth() {
     await web3.transferEth(inputWallet.value, recipient.value, amount.value);
     emptyUser();
     drawSuccess(inputWallet.value, recipient.value, amount.value);
+    initApp();
   } catch (error) {
     displayError(error);
   }

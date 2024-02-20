@@ -28,4 +28,12 @@ export default class Web3 {
       throw new Error(error);
     }
   }
+
+  async getLatestBlock() {
+    try {
+      return await this.provider.getBlockNumber();
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }
