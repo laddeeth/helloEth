@@ -17,7 +17,7 @@ const drawSuccess = (from, to, amount) => {
   div.classList.add('success');
   const p = createP();
   p.append(
-    `Congratulations ${from}! Your transfer of ${amount}ETH to ${to} is a success. Check balance to instigate a new transfer.`
+    `Congratulations ${from}! Your transfer of ${amount}ETH to ${to} is a success. Check balance to initiate a new transfer.`
   );
   div.append(p);
   transferDisplay.append(div);

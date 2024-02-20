@@ -22,7 +22,7 @@ body {
     justify-content: flex-start;
     gap: 2rem;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background: rgb(2, 0, 36);
     background: linear-gradient(
       170deg,
